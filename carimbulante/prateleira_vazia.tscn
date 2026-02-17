@@ -1,11 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://ioe4t3xxb5jl"]
+[gd_scene load_steps=7 format=3 uid="uid://ioe4t3xxb5jl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_icbkm"]
+[ext_resource type="Script" uid="uid://dgp4mmnpich1y" path="res://prateleira_vazia.gd" id="1_mcfe7"]
+[ext_resource type="Texture2D" uid="uid://karbch2ui3g4" path="res://sprites/shelve_left_long.png" id="1_uvlid"]
+[ext_resource type="Texture2D" uid="uid://b04flf4mexx3d" path="res://sprites/shelve_center.png" id="2_85kh6"]
+[ext_resource type="Texture2D" uid="uid://ie2n2a65jpgt" path="res://sprites/shelve_right_long.png" id="3_mcfe7"]
+[ext_resource type="Texture2D" uid="uid://donoyug1aryvc" path="res://sprites/apple.png" id="5_qhxb1"]
 
-[node name="prateleira_vazia" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24mt7"]
+size = Vector2(15.9063, 17.4462)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="prateleira_grande" type="Node2D"]
+script = ExtResource("1_mcfe7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2.17846, 6.92195)
-shape = SubResource("RectangleShape2D_icbkm")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-33, 2)
+texture = ExtResource("1_uvlid")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("2_85kh6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(31, 2)
+texture = ExtResource("3_mcfe7")
+
+[node name="SpritePrompt" type="Sprite2D" parent="."]
+texture = ExtResource("5_qhxb1")
+
+[node name="areainteracao" type="Area2D" parent="."]
+scale = Vector2(-6.21323, 1.32509)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areainteracao"]
+position = Vector2(0.182994, 2.17499)
+scale = Vector2(1.10443, 1.7033)
+shape = SubResource("RectangleShape2D_24mt7")

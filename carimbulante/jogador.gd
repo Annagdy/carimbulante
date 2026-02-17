@@ -12,7 +12,7 @@ func get_input():
 	)
 	return input_direcao
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direcao_input=get_input()
 	velocity=direcao_input * velocidade
 	move_and_slide()

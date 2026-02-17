@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cglf07q31ee0x"]
+
+[ext_resource type="Texture2D" uid="uid://b04flf4mexx3d" path="res://sprites/shelve_center.png" id="1_7jsol"]
+[ext_resource type="Script" uid="uid://baqpdmxgeyw5j" path="res://prateleira_media_direita.gd" id="1_ehsap"]
+[ext_resource type="Texture2D" uid="uid://ie2n2a65jpgt" path="res://sprites/shelve_right_long.png" id="2_ehsap"]
+[ext_resource type="Texture2D" uid="uid://donoyug1aryvc" path="res://sprites/apple.png" id="4_h5o5a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5o5a"]
+size = Vector2(10.3467, 16.6459)
+
+[node name="prateleira_media_direita" type="Node2D"]
+script = ExtResource("1_ehsap")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("1_7jsol")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(31, 2)
+texture = ExtResource("2_ehsap")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+
+[node name="areainteracao" type="Area2D" parent="."]
+scale = Vector2(-6.21323, 1.32509)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areainteracao"]
+position = Vector2(-2.17279, 2.85652)
+scale = Vector2(1.10443, 1.7033)
+shape = SubResource("RectangleShape2D_h5o5a")
+
+[node name="SpritePrompt" type="Sprite2D" parent="."]
+texture = ExtResource("4_h5o5a")

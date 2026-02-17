@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7pabqsbhrxex"]
+[gd_scene load_steps=24 format=3 uid="uid://b7pabqsbhrxex"]
 
 [ext_resource type="Script" uid="uid://danbi76sopodf" path="res://jogador.gd" id="1_c2wt1"]
 [ext_resource type="Texture2D" uid="uid://bkhe6c0rnmgrr" path="res://sprites/walk_right1.png" id="2_k6t5q"]
@@ -21,9 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://covki7nr678j7" path="res://sprites/left.png" id="19_huwyd"]
 [ext_resource type="Texture2D" uid="uid://c6420tdonl8oi" path="res://sprites/prota.png" id="20_lnli0"]
 [ext_resource type="Texture2D" uid="uid://cbe45cjbc6opf" path="res://sprites/back.png" id="21_omdyl"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4mvw6"]
-load_path = "res://.godot/imported/prota.png-2537412fc4a6ccdb4b7175494cf60819.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4obgb"]
 radius = 21.095
@@ -131,19 +128,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="jogador" type="CharacterBody2D"]
+[node name="jogador" type="CharacterBody2D" groups=["jogador"]]
 script = ExtResource("1_c2wt1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("CompressedTexture2D_4mvw6")
+texture = ExtResource("20_lnli0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
 shape = SubResource("CircleShape2D_4obgb")
-one_way_collision = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["jogador"]]
 sprite_frames = SubResource("SpriteFrames_vri71")
 animation = &"parado_trás"
