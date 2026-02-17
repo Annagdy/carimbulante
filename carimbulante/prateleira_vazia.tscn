@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ioe4t3xxb5jl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icbkm"]
+
+[node name="prateleira_vazia" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.17846, 6.92195)
+shape = SubResource("RectangleShape2D_icbkm")
