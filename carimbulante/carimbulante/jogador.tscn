@@ -128,18 +128,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="jogador" type="CharacterBody2D" groups=["jogador", "jogadores"]]
+[node name="jogador" type="CharacterBody2D" groups=["jogador"]]
 script = ExtResource("1_c2wt1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["jogador", "jogadores"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("20_lnli0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["jogador", "jogadores"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
 shape = SubResource("CircleShape2D_4obgb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["jogador", "jogadores"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["jogador"]]
 sprite_frames = SubResource("SpriteFrames_vri71")
 animation = &"parado_trás"

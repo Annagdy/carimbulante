@@ -5,7 +5,6 @@ extends Node2D
 
 var jogador_proximo=false
 var jogador = null
-var interagiu= false
 
 func _ready():
 	area_interacao.body_entered.connect(_on_areainteracao_body_entered)
@@ -24,15 +23,14 @@ func _on_areainteracao_body_exited(body):
 
 func _process(_delta: float) -> void:
 	if prompt_interacao:
-		prompt_interacao.visible=jogador_proximo and not interagiu
-		if jogador_proximo and jogador and not interagiu:
+		prompt_interacao.visible=jogador_proximo
+		if jogador_proximo and jogador:
 			prompt_interacao.play("default")
 			prompt_interacao.global_position = jogador.global_position + Vector2(0, -50)
 	
 func _input(event):
-	if event.is_action_pressed("acao") and jogador_proximo and not interagiu:
+	if event.is_action_pressed("acao") and jogador_proximo:
 		interagir()
 
 func interagir():
-	interagiu = true
 	print("interagiu com a prateleira")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ioe4t3xxb5jl"]
 
-[ext_resource type="Script" uid="uid://b54n66ou6eqei" path="res://prateleira_vazia.gd" id="1_mcfe7"]
+[ext_resource type="Script" uid="uid://dgp4mmnpich1y" path="res://prateleira_vazia.gd" id="1_mcfe7"]
 [ext_resource type="Texture2D" uid="uid://karbch2ui3g4" path="res://sprites/shelve_left_long.png" id="1_uvlid"]
 [ext_resource type="Texture2D" uid="uid://b04flf4mexx3d" path="res://sprites/shelve_center.png" id="2_85kh6"]
 [ext_resource type="Texture2D" uid="uid://ie2n2a65jpgt" path="res://sprites/shelve_right_long.png" id="3_mcfe7"]

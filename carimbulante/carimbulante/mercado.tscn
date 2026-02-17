@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://ducn2xki6pcn5"]
+
+[ext_resource type="PackedScene" uid="uid://b7pabqsbhrxex" path="res://jogador.tscn" id="1_r4o0k"]
+[ext_resource type="PackedScene" uid="uid://da6wgonv3po7l" path="res://parede.tscn" id="2_7ytr3"]
+[ext_resource type="PackedScene" uid="uid://ioe4t3xxb5jl" path="res://prateleira_vazia.tscn" id="3_4rbc8"]
+[ext_resource type="PackedScene" uid="uid://cglf07q31ee0x" path="res://prateleira_media_direita.tscn" id="4_a3o66"]
+[ext_resource type="PackedScene" uid="uid://htpara01ca25" path="res://prateleira_media_esquerda.tscn" id="5_wy5mm"]
+
+[sub_resource type="TileSet" id="TileSet_dqnft"]
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 0
+
+[node name="Mercado" type="Node2D"]
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_dqnft")
+occlusion_enabled = false
+
+[node name="jogador" parent="." instance=ExtResource("1_r4o0k")]
+
+[node name="Camera2D" type="Camera2D" parent="jogador"]
+position_smoothing_enabled = true
+
+[node name="parede" parent="." instance=ExtResource("2_7ytr3")]
+position = Vector2(-587, 319)
+scale = Vector2(1.76, 1)
+
+[node name="parede2" parent="." instance=ExtResource("2_7ytr3")]
+position = Vector2(562, -324)
+rotation = 1.5708
+
+[node name="parede3" parent="." instance=ExtResource("2_7ytr3")]
+position = Vector2(-579, -333)
+rotation = 1.5708
+
+[node name="parede4" parent="." instance=ExtResource("2_7ytr3")]
+position = Vector2(-589, -323)
+scale = Vector2(1.80319, -1.04006)
+
+[node name="prateleira_grande" parent="." instance=ExtResource("3_4rbc8")]
+position = Vector2(6, -296)
+
+[node name="prateleira_media_direita" parent="." instance=ExtResource("4_a3o66")]
+position = Vector2(-551, -298)
+
+[node name="prateleira_media_esquerda" parent="." instance=ExtResource("5_wy5mm")]
+position = Vector2(540, -298)
