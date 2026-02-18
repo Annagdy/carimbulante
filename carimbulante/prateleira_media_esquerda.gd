@@ -7,6 +7,8 @@ var jogador_proximo=false
 var jogador = null
 var interagiu= false
 
+var minigame_atual = null
+
 func _ready():
 	area_interacao.body_entered.connect(_on_areainteracao_body_entered)
 	area_interacao.body_exited.connect(_on_areainteracao_body_exited)
@@ -35,4 +37,24 @@ func _input(event):
 
 func interagir():
 	interagiu = true
-	print("interagiu com a prateleira")
+	var minigame_scene = preload("res://minigame.tscn")
+	minigame_atual = minigame_scene.instantiate()
+	minigame_atual.connect("minigame_terminado", _on_minigame_terminado)
+	
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.name = "MinigameLayer"
+	get_tree().current_scene.add_child(canvas_layer)
+	canvas_layer.add_child(minigame_atual)
+	
+	get_tree().paused = true
+
+func _on_minigame_terminado(pontos):
+	if minigame_atual:
+		var parent = minigame_atual.get_parent()
+		if parent is CanvasLayer:
+			parent.queue_free()
+		else:
+			minigame_atual.queue_free()
+		minigame_atual = null
+	get_tree().paused = false
+	print("Pontuação obtida: ", pontos)

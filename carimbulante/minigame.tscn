@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1vu2jvq6qe0p"]
+
+[ext_resource type="Script" uid="uid://dv37khh5ip8lw" path="res://minigame.gd" id="1_4bqly"]
+
+[node name="minigame" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4bqly")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CaminhoAlvo" type="Line2D" parent="Panel"]
+points = PackedVector2Array(162, 242, 252, 94, 335, 246)
+default_color = Color(0.4, 0.4, 1, 1)
+
+[node name="TrajetoJogador" type="Line2D" parent="Panel"]
+width = 5.0
+default_color = Color(1, 1, 0, 1)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Clique e arraste para traçar o caminho"
+horizontal_alignment = 1
