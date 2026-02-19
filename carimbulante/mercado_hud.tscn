@@ -1,0 +1,168 @@
+[gd_scene load_steps=21 format=3 uid="uid://bcsqhqi3cwudj"]
+
+[ext_resource type="Script" uid="uid://8suq3f1hdt8y" path="res://mercado_hud.gd" id="1_dijno"]
+[ext_resource type="FontFile" uid="uid://bww0dh4owxjdg" path="res://bernhc.ttf" id="2_v6hs4"]
+[ext_resource type="Texture2D" uid="uid://pgegfv12ir3f" path="res://sprites/timer_moving1.png" id="3_7qqh4"]
+[ext_resource type="Texture2D" uid="uid://b5epsycghtu3x" path="res://sprites/timer_moving2.png" id="4_gcmbp"]
+[ext_resource type="Texture2D" uid="uid://cm0hso3pw8pfx" path="res://sprites/timer_moving3.png" id="5_crff8"]
+[ext_resource type="Texture2D" uid="uid://gtmwa3kjh54y" path="res://sprites/timer_moving4.png" id="6_q6qc3"]
+[ext_resource type="Texture2D" uid="uid://dmf7ppiuly1fp" path="res://sprites/timer_moving5.png" id="7_dht0w"]
+[ext_resource type="Texture2D" uid="uid://cbomrgphpcw6j" path="res://sprites/timer_moving6.png" id="8_5e3hc"]
+[ext_resource type="Texture2D" uid="uid://bojs4jt5fe2ox" path="res://sprites/timer_moving7.png" id="9_w4tem"]
+[ext_resource type="Texture2D" uid="uid://b77a6vyf6cpcv" path="res://sprites/timer_moving8.png" id="10_hphi8"]
+[ext_resource type="Texture2D" uid="uid://cqd065rstmm8k" path="res://sprites/timer_moving9.png" id="11_agmny"]
+[ext_resource type="Texture2D" uid="uid://cag4pou8sihmx" path="res://sprites/timer_moving10.png" id="12_q3cq6"]
+[ext_resource type="Texture2D" uid="uid://djqcx424bmvhl" path="res://sprites/timer_moving11.png" id="13_ew4dx"]
+[ext_resource type="Texture2D" uid="uid://ba2xvwoyjpmcl" path="res://sprites/timer_moving12.png" id="14_mhm3q"]
+[ext_resource type="Texture2D" uid="uid://cxun72733jwyn" path="res://sprites/timer_moving13.png" id="15_jfcha"]
+[ext_resource type="Texture2D" uid="uid://ddycxgv4t67pm" path="res://sprites/timer_moving14.png" id="16_0kvls"]
+[ext_resource type="Texture2D" uid="uid://begwkttt2lfsp" path="res://sprites/timer_moving15.png" id="17_6kcj2"]
+[ext_resource type="Texture2D" uid="uid://ce5a1ycmsvan3" path="res://sprites/timer_moving16.png" id="18_gkqme"]
+[ext_resource type="Texture2D" uid="uid://c52qpo25xq278" path="res://sprites/score.png" id="19_7qqh4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ourko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7qqh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gcmbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_crff8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q6qc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dht0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5e3hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w4tem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hphi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_agmny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_q3cq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ew4dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mhm3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jfcha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0kvls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6kcj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gkqme")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MercadoHUD" type="CanvasLayer" groups=["hud"]]
+script = ExtResource("1_dijno")
+
+[node name="PainelHUD" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 80)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="LabelTimer" type="Label" parent="PainelHUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 62.0
+offset_right = 32.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_v6hs4")
+theme_override_font_sizes/font_size = 32
+text = "1:30"
+
+[node name="TimerAnimation" type="AnimatedSprite2D" parent="PainelHUD/LabelTimer"]
+position = Vector2(25, -30)
+sprite_frames = SubResource("SpriteFrames_ourko")
+frame = 4
+frame_progress = 0.739686
+
+[node name="LabelPontuacao" type="Label" parent="PainelHUD"]
+visibility_layer = 1023
+z_index = 5
+layout_mode = 0
+offset_left = 31.0
+offset_top = 52.0
+offset_right = 118.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_v6hs4")
+theme_override_font_sizes/font_size = 24
+text = "Pontos: 0"
+
+[node name="BotaoFinalizar" type="Button" parent="PainelHUD"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_v6hs4")
+text = "Finalizar"
+
+[node name="Sprite2D" type="Sprite2D" parent="PainelHUD"]
+position = Vector2(72.375, 39.75)
+scale = Vector2(1.30405, 1.37069)
+texture = ExtResource("19_7qqh4")
+
+[node name="PainelResultado" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelResultado" type="Label" parent="PainelResultado"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_v6hs4")
+theme_override_font_sizes/font_size = 36

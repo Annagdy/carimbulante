@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://ducn2xki6pcn5"]
+[gd_scene load_steps=9 format=3 uid="uid://ducn2xki6pcn5"]
 
 [ext_resource type="PackedScene" uid="uid://b7pabqsbhrxex" path="res://jogador.tscn" id="1_r4o0k"]
+[ext_resource type="Script" uid="uid://dr0g326ji2feq" path="res://mercado.gd" id="1_wy5mm"]
 [ext_resource type="PackedScene" uid="uid://da6wgonv3po7l" path="res://parede.tscn" id="2_7ytr3"]
 [ext_resource type="PackedScene" uid="uid://ioe4t3xxb5jl" path="res://prateleira_vazia.tscn" id="3_4rbc8"]
 [ext_resource type="PackedScene" uid="uid://cglf07q31ee0x" path="res://prateleira_media_direita.tscn" id="4_a3o66"]
 [ext_resource type="PackedScene" uid="uid://htpara01ca25" path="res://prateleira_media_esquerda.tscn" id="5_wy5mm"]
+[ext_resource type="PackedScene" uid="uid://bcsqhqi3cwudj" path="res://mercado_hud.tscn" id="7_updge"]
 
 [sub_resource type="TileSet" id="TileSet_dqnft"]
 custom_data_layer_0/name = ""
 custom_data_layer_0/type = 0
 
 [node name="Mercado" type="Node2D"]
+script = ExtResource("1_wy5mm")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -46,3 +49,5 @@ position = Vector2(-551, -298)
 
 [node name="prateleira_media_esquerda" parent="." instance=ExtResource("5_wy5mm")]
 position = Vector2(540, -298)
+
+[node name="MercadoHUD" parent="." instance=ExtResource("7_updge")]

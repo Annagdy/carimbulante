@@ -43,12 +43,13 @@ func interagir():
 	
 	var canvas_layer = CanvasLayer.new()
 	canvas_layer.name = "MinigameLayer"
+	canvas_layer.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().current_scene.add_child(canvas_layer)
 	canvas_layer.add_child(minigame_atual)
 	
 	get_tree().paused = true
 
-func _on_minigame_terminado(pontos):
+func _on_minigame_terminado(_pontos):
 	if minigame_atual:
 		var parent = minigame_atual.get_parent()
 		if parent is CanvasLayer:
@@ -57,4 +58,3 @@ func _on_minigame_terminado(pontos):
 			minigame_atual.queue_free()
 		minigame_atual = null
 	get_tree().paused = false
-	print("Pontuação obtida: ", pontos)

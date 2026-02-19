@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckx25qxucix0j"
-path="res://.godot/imported/menu.png-031e8248bd806b7df772ee8ccc4b4c5e.ctex"
+uid="uid://djqcx424bmvhl"
+path="res://.godot/imported/timer_moving11.png-023d51a70b6c3191a379e8b1676a80a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu.png"
-dest_files=["res://.godot/imported/menu.png-031e8248bd806b7df772ee8ccc4b4c5e.ctex"]
+source_file="res://sprites/timer_moving11.png"
+dest_files=["res://.godot/imported/timer_moving11.png-023d51a70b6c3191a379e8b1676a80a6.ctex"]
 
 [params]
 
