@@ -42,12 +42,15 @@ position = Vector2(-589, -323)
 scale = Vector2(1.80319, -1.04006)
 
 [node name="prateleira_grande" parent="." instance=ExtResource("3_4rbc8")]
+texture_filter = 1
 position = Vector2(6, -296)
 
 [node name="prateleira_media_direita" parent="." instance=ExtResource("4_a3o66")]
+texture_filter = 1
 position = Vector2(-551, -298)
 
 [node name="prateleira_media_esquerda" parent="." instance=ExtResource("5_wy5mm")]
+texture_filter = 1
 position = Vector2(540, -298)
 
 [node name="MercadoHUD" parent="." instance=ExtResource("7_updge")]

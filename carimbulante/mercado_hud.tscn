@@ -101,25 +101,27 @@ theme_override_font_sizes/font_size = 32
 text = "1:30"
 
 [node name="TimerAnimation" type="AnimatedSprite2D" parent="PainelHUD/LabelTimer"]
+texture_filter = 1
 position = Vector2(25, -30)
 sprite_frames = SubResource("SpriteFrames_ourko")
-frame = 4
-frame_progress = 0.739686
+speed_scale = 0.19
 
 [node name="LabelPontuacao" type="Label" parent="PainelHUD"]
 visibility_layer = 1023
 z_index = 5
+texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
+offset_left = 90.0
 offset_top = 52.0
-offset_right = 118.0
+offset_right = 177.0
 offset_bottom = 82.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_v6hs4")
 theme_override_font_sizes/font_size = 24
-text = "Pontos: 0"
+text = "0"
 
 [node name="BotaoFinalizar" type="Button" parent="PainelHUD"]
+texture_filter = 1
 layout_direction = 1
 layout_mode = 1
 anchors_preset = 1
@@ -132,6 +134,7 @@ theme_override_fonts/font = ExtResource("2_v6hs4")
 text = "Finalizar"
 
 [node name="Sprite2D" type="Sprite2D" parent="PainelHUD"]
+texture_filter = 1
 position = Vector2(72.375, 39.75)
 scale = Vector2(1.30405, 1.37069)
 texture = ExtResource("19_7qqh4")

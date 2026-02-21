@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var velocidade_maxima = 600
 @export var aceleracao = 400
-@export var desaceleracao = 1500
+@export var desaceleracao = 2500
 var direcao_anterior=Vector2.DOWN
 
 func get_input():

@@ -45,7 +45,7 @@ func _atualizar_ui() -> void:
 	if has_node("/root/GameManager"):
 		pontos = get_node("/root/GameManager").pontuacao_total
 	
-	label_pontuacao.text = "Pontos: %d" % pontos
+	label_pontuacao.text = "%d" % pontos
 	
 	if tempo_restante <= 10.0:
 		label_timer.add_theme_color_override("font_color", Color.RED)
