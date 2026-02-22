@@ -237,7 +237,7 @@ speed_scale = 2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -152)
+position = Vector2(11, -152)
 texture = ExtResource("42_3kqnc")
 
 [connection signal="animation_finished" from="BotaoInicio/BotaoInicioAnimacao" to="." method="_on_botao_inicio_animacao_animation_finished"]
