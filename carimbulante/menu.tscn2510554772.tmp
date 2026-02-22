@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3itcfu05e7gl"]
+[gd_scene load_steps=42 format=3 uid="uid://c3itcfu05e7gl"]
 
 [ext_resource type="Script" uid="uid://bqo8ov65kwvlq" path="res://menu.gd" id="1_w0s3i"]
 [ext_resource type="Texture2D" uid="uid://b6upb5rfdn7jd" path="res://sprites/stamp_click_menu1.png" id="2_ciy7n"]
@@ -15,10 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://b04rn2gncpmx3" path="res://sprites/start_hover1.png" id="16_lwl3b"]
 [ext_resource type="Texture2D" uid="uid://bcb5j632d2ysf" path="res://sprites/start_hover2.png" id="17_t1ows"]
 [ext_resource type="Texture2D" uid="uid://du4nahfa86bu2" path="res://sprites/start_hover3.png" id="18_5xags"]
-[ext_resource type="Texture2D" uid="uid://bk76vaw4iaqal" path="res://sprites/stamp_click_menu6.png" id="19_8lmdq"]
 [ext_resource type="Texture2D" uid="uid://b4jvtafnkw4s8" path="res://sprites/start_hover4.png" id="19_wyyhw"]
 [ext_resource type="Texture2D" uid="uid://cwnaxjl4bah04" path="res://sprites/start_hover5.png" id="20_gyv6s"]
 [ext_resource type="Texture2D" uid="uid://5x5nlxa4h37x" path="res://sprites/start_hover6.png" id="21_g8u3f"]
+[ext_resource type="Texture2D" uid="uid://m1pua8a1k3tr" path="res://sprites/exit_click1.png" id="22_dl4fq"]
+[ext_resource type="Texture2D" uid="uid://danh1ey3s7s0u" path="res://sprites/exit_click2.png" id="23_8bala"]
+[ext_resource type="Texture2D" uid="uid://c21bfgqtgdp1l" path="res://sprites/exit_click3.png" id="24_xmvw1"]
+[ext_resource type="Texture2D" uid="uid://d1042ksjkyt6e" path="res://sprites/exit_click4.png" id="25_dgv8b"]
+[ext_resource type="Texture2D" uid="uid://b8xcuemes4m61" path="res://sprites/exit_click5.png" id="26_oha31"]
+[ext_resource type="Texture2D" uid="uid://o7vmhkk3s8dp" path="res://sprites/exit_click6.png" id="27_41fha"]
+[ext_resource type="Texture2D" uid="uid://cw0ugou434uux" path="res://sprites/exit_click7.png" id="28_lrhmk"]
+[ext_resource type="Texture2D" uid="uid://b40kugm3eghd5" path="res://sprites/exit_click8.png" id="29_pyh72"]
 [ext_resource type="Texture2D" uid="uid://d8xirhray43p" path="res://sprites/exit_still1.png" id="30_ay07r"]
 [ext_resource type="Texture2D" uid="uid://pah04tqwtjck" path="res://sprites/exit_still2.png" id="31_5yl2w"]
 [ext_resource type="Texture2D" uid="uid://dsoulkph6efog" path="res://sprites/exit_still3.png" id="32_f82t3"]
@@ -50,9 +57,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_qb2su")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_8lmdq")
 }, {
 "duration": 1.0,
 "texture": ExtResource("10_j1y2i")
@@ -112,27 +116,30 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ciy7n")
+"texture": ExtResource("22_dl4fq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_tnkdk")
+"texture": ExtResource("23_8bala")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8o4uf")
+"texture": ExtResource("24_xmvw1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_j1y2i")
+"texture": ExtResource("25_dgv8b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_qb2su")
+"texture": ExtResource("26_oha31")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_8lmdq")
+"texture": ExtResource("27_41fha")
 }, {
 "duration": 1.0,
-"texture": ExtResource("30_ay07r")
+"texture": ExtResource("28_lrhmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_pyh72")
 }],
-"loop": false,
+"loop": true,
 "name": &"clicar",
 "speed": 5.0
 }, {
@@ -188,7 +195,6 @@ position = Vector2(555, 292)
 script = ExtResource("1_w0s3i")
 
 [node name="BotaoInicio" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -207,12 +213,11 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 position = Vector2(125, 50)
 sprite_frames = SubResource("SpriteFrames_ftmlt")
-animation = &"normal"
+animation = &"clicar"
 autoplay = "normal"
 speed_scale = 2.5
 
 [node name="BotaoSair" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -233,7 +238,6 @@ position = Vector2(126, 50)
 sprite_frames = SubResource("SpriteFrames_qrf1l")
 animation = &"normal"
 autoplay = "normal"
-speed_scale = 2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -241,4 +245,3 @@ position = Vector2(0, -152)
 texture = ExtResource("42_3kqnc")
 
 [connection signal="animation_finished" from="BotaoInicio/BotaoInicioAnimacao" to="." method="_on_botao_inicio_animacao_animation_finished"]
-[connection signal="animation_finished" from="BotaoSair/BotaoSairAnimacao" to="." method="_on_botao_sair_animacao_animation_finished"]
