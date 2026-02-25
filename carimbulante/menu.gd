@@ -10,6 +10,8 @@ var cursor_texture = load("res://sprites/hand_normal.png")
 var hotspot = Vector2(16, 16)
 
 func _ready():
+#	if has_node("/root/MusicaGlobal"):
+#		MusicaGlobal.play_music()
 	set_hand_cursor()
 	iniciar.mouse_entered.connect(_on_iniciar_mouse_entered)
 	iniciar.mouse_exited.connect(_on_iniciar_mouse_exited)

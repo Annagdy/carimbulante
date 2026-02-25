@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var area_interacao=$areainteracao
+@onready var area_interacao=$Areainteracao
 @onready var prompt_interacao = $SpritePrompt
 
 var jogador_proximo=false
@@ -43,6 +43,7 @@ func interagir():
 	
 	var canvas_layer = CanvasLayer.new()
 	canvas_layer.name = "MinigameLayer"
+	canvas_layer.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().current_scene.add_child(canvas_layer)
 	canvas_layer.add_child(minigame_atual)
 	

@@ -50,10 +50,10 @@ texture = ExtResource("2_ehsap")
 
 [node name="Sprite2D6" type="Sprite2D" parent="."]
 
-[node name="areainteracao" type="Area2D" parent="."]
+[node name="Areainteracao" type="Area2D" parent="."]
 scale = Vector2(-6.21323, 1.32509)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areainteracao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areainteracao"]
 position = Vector2(-2.17279, 2.85652)
 scale = Vector2(1.10443, 1.7033)
 shape = SubResource("RectangleShape2D_h5o5a")

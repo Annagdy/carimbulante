@@ -24,6 +24,8 @@ const PONTUACAO_MAXIMA = 1000
 const DISTANCIA_MAXIMA = 50 
 
 func _ready():
+	if has_node("/root/MusicaGlobal"):
+		MusicaGlobal.play_music()
 	set_hand_cursor()
 	randomize()
 	escolher_textura_aleatoria()

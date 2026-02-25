@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0b5xcpu1ne50"]
+
+[ext_resource type="Script" uid="uid://b54n66ou6eqei" path="res://prateleira_vazia.gd" id="1_mlu8h"]
+[ext_resource type="Texture2D" uid="uid://cbpginbo73brw" path="res://sprites/fridge_left_end.png" id="2_nfr6t"]
+[ext_resource type="Texture2D" uid="uid://c7ldt3tjl1mb2" path="res://sprites/fridge_center.png" id="3_ey3ys"]
+[ext_resource type="Texture2D" uid="uid://uilvlfe31awn" path="res://sprites/fridge_right_end.png" id="4_l7y45"]
+[ext_resource type="Texture2D" uid="uid://c8hv7k5gtcva1" path="res://sprites/e.png" id="5_2xq5o"]
+[ext_resource type="Texture2D" uid="uid://d0fkjpi5qfmr2" path="res://sprites/e_pressed1.png" id="6_xc0m3"]
+[ext_resource type="Texture2D" uid="uid://bqwqqr4wih8y8" path="res://sprites/e_pressed2.png" id="7_pky42"]
+[ext_resource type="Texture2D" uid="uid://ewp7p855aa6l" path="res://sprites/e_pressed3.png" id="8_3tfid"]
+[ext_resource type="Texture2D" uid="uid://bohqh2sa8omqp" path="res://sprites/e_pressed4.png" id="9_7u7ak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlu8h"]
+size = Vector2(9.49587, 24.904)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i6x3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2xq5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xc0m3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pky42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3tfid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7u7ak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="geladeira_grande" type="Node2D"]
+script = ExtResource("1_mlu8h")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-14, 2)
+texture = ExtResource("2_nfr6t")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("3_ey3ys")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(11, 2)
+texture = ExtResource("4_l7y45")
+
+[node name="Areainteracao" type="Area2D" parent="."]
+scale = Vector2(-6.21323, 1.32509)
+
+[node name="CollisionShape2Dgg" type="CollisionShape2D" parent="Areainteracao"]
+position = Vector2(0.402367, 1.132)
+shape = SubResource("RectangleShape2D_mlu8h")
+
+[node name="SpritePrompt" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 11)
+scale = Vector2(0.583333, 0.541667)
+sprite_frames = SubResource("SpriteFrames_i6x3d")
+frame_progress = 0.84741
+speed_scale = 3.0

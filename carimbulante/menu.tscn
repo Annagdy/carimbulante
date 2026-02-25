@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3itcfu05e7gl"]
+[gd_scene load_steps=37 format=3 uid="uid://c3itcfu05e7gl"]
 
 [ext_resource type="Script" uid="uid://bqo8ov65kwvlq" path="res://menu.gd" id="1_w0s3i"]
 [ext_resource type="Texture2D" uid="uid://b6upb5rfdn7jd" path="res://sprites/stamp_click_menu1.png" id="2_ciy7n"]
@@ -23,7 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://pah04tqwtjck" path="res://sprites/exit_still2.png" id="31_5yl2w"]
 [ext_resource type="Texture2D" uid="uid://dsoulkph6efog" path="res://sprites/exit_still3.png" id="32_f82t3"]
 [ext_resource type="Texture2D" uid="uid://bfh4jc0u8iq0p" path="res://sprites/exit_still4.png" id="33_g7tms"]
+[ext_resource type="Texture2D" uid="uid://dsowjwuhfjc88" path="res://sprites/prota_menu.png" id="33_m2id3"]
 [ext_resource type="Texture2D" uid="uid://r38da10mprt4" path="res://sprites/exit_still5.png" id="34_65flr"]
+[ext_resource type="AudioStream" uid="uid://dpg0v2og7kvfx" path="res://musica_menu.mp3" id="34_k1fdc"]
 [ext_resource type="Texture2D" uid="uid://dl6jkjowagn0x" path="res://sprites/exit_still6.png" id="35_sowed"]
 [ext_resource type="Texture2D" uid="uid://cc1uwsnwr82f2" path="res://sprites/exit_hover1.png" id="36_s0svo"]
 [ext_resource type="Texture2D" uid="uid://c7odlx1gn4t2r" path="res://sprites/exit_hover2.png" id="37_r8j3e"]
@@ -239,6 +241,15 @@ speed_scale = 2.5
 texture_filter = 1
 position = Vector2(11, -152)
 texture = ExtResource("42_3kqnc")
+
+[node name="ProtaMenu" type="Sprite2D" parent="."]
+position = Vector2(-282, 32)
+texture = ExtResource("33_m2id3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_k1fdc")
+autoplay = true
+parameters/looping = true
 
 [connection signal="animation_finished" from="BotaoInicio/BotaoInicioAnimacao" to="." method="_on_botao_inicio_animacao_animation_finished"]
 [connection signal="animation_finished" from="BotaoSair/BotaoSairAnimacao" to="." method="_on_botao_sair_animacao_animation_finished"]

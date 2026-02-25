@@ -33,16 +33,16 @@ func _physics_process(delta):
 		else:
 			if (velocity.y>0):
 				animated_sprite.play("andar_frente")
-				direcao_anterior=Vector2.UP
+				direcao_anterior=Vector2.DOWN
 			else:
 				animated_sprite.play("andar_trás")
-				direcao_anterior=Vector2.DOWN
+				direcao_anterior=Vector2.UP
 	else:
 		match direcao_anterior:
 			Vector2.DOWN:
-				animated_sprite.play("parado_trás")
-			Vector2.UP:
 				animated_sprite.play("parado_frente")
+			Vector2.UP:
+				animated_sprite.play("parado_trás")
 			Vector2.LEFT:
 				animated_sprite.play("parado_esquerda")
 			_:

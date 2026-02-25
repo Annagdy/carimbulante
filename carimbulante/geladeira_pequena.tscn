@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://x8dppra2mj6n"]
+
+[ext_resource type="Script" uid="uid://b54n66ou6eqei" path="res://prateleira_vazia.gd" id="1_ljidc"]
+[ext_resource type="Texture2D" uid="uid://br3lr06yk6vco" path="res://sprites/fridge.png" id="2_m5r8w"]
+[ext_resource type="Texture2D" uid="uid://c8hv7k5gtcva1" path="res://sprites/e.png" id="3_ebwue"]
+[ext_resource type="Texture2D" uid="uid://d0fkjpi5qfmr2" path="res://sprites/e_pressed1.png" id="4_o7i8q"]
+[ext_resource type="Texture2D" uid="uid://bqwqqr4wih8y8" path="res://sprites/e_pressed2.png" id="5_qhyrb"]
+[ext_resource type="Texture2D" uid="uid://ewp7p855aa6l" path="res://sprites/e_pressed3.png" id="6_y6cn8"]
+[ext_resource type="Texture2D" uid="uid://bohqh2sa8omqp" path="res://sprites/e_pressed4.png" id="7_hd6y6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24mt7"]
+size = Vector2(5.68341, 15.0641)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i6x3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ebwue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o7i8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qhyrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y6cn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hd6y6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="geladeira_grande" type="Node2D"]
+script = ExtResource("1_ljidc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("2_m5r8w")
+
+[node name="Areainteracao" type="Area2D" parent="."]
+scale = Vector2(-6.21323, 1.32509)
+
+[node name="CollisionShape2Dgp" type="CollisionShape2D" parent="Areainteracao"]
+unique_name_in_owner = true
+position = Vector2(-0.24142, 1.50933)
+scale = Vector2(1.10443, 1.7033)
+shape = SubResource("RectangleShape2D_24mt7")
+
+[node name="SpritePrompt" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 11)
+scale = Vector2(0.583333, 0.541667)
+sprite_frames = SubResource("SpriteFrames_i6x3d")
+frame_progress = 0.84741
+speed_scale = 3.0

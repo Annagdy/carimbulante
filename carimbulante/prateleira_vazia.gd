@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var area_interacao=$areainteracao
+@onready var area_interacao= $Areainteracao
 @onready var prompt_interacao = $SpritePrompt
 
 var jogador_proximo=false
@@ -10,6 +10,12 @@ var interagiu= false
 var minigame_atual = null
 
 func _ready():
+	print("=== FILHOS DO NÓ ===")
+	for child in get_children():
+		print(child.name, " | tipo: ", child.get_class())
+	print("Tentando achar Areainteracao: ", get_node_or_null("Areainteracao"))
+	if area_interacao:
+		print("areainteracao nao e o problema")
 	area_interacao.body_entered.connect(_on_areainteracao_body_entered)
 	area_interacao.body_exited.connect(_on_areainteracao_body_exited)
 

@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctqshvyy6tgcu"]
+
+[ext_resource type="Script" uid="uid://b54n66ou6eqei" path="res://prateleira_vazia.gd" id="1_a1rrt"]
+[ext_resource type="Texture2D" uid="uid://cu3qtiawd181y" path="res://sprites/freezer.png" id="2_t7vt4"]
+[ext_resource type="Texture2D" uid="uid://c8hv7k5gtcva1" path="res://sprites/e.png" id="3_q3xle"]
+[ext_resource type="Texture2D" uid="uid://d0fkjpi5qfmr2" path="res://sprites/e_pressed1.png" id="4_prk0q"]
+[ext_resource type="Texture2D" uid="uid://bqwqqr4wih8y8" path="res://sprites/e_pressed2.png" id="5_mh2bj"]
+[ext_resource type="Texture2D" uid="uid://ewp7p855aa6l" path="res://sprites/e_pressed3.png" id="6_djx4d"]
+[ext_resource type="Texture2D" uid="uid://bohqh2sa8omqp" path="res://sprites/e_pressed4.png" id="7_j4ko6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24mt7"]
+size = Vector2(6.10767, 12.2983)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i6x3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q3xle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_prk0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mh2bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_djx4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j4ko6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="freezer_pequeno" type="Node2D"]
+script = ExtResource("1_a1rrt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("2_t7vt4")
+
+[node name="Areainteracao" type="Area2D" parent="."]
+scale = Vector2(-6.21323, 1.32509)
+
+[node name="CollisionShape2Dfg" type="CollisionShape2D" parent="Areainteracao"]
+position = Vector2(0.160947, 3.77333)
+scale = Vector2(0.903668, 1.59122)
+shape = SubResource("RectangleShape2D_24mt7")
+
+[node name="SpritePrompt" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 11)
+scale = Vector2(0.583333, 0.541667)
+sprite_frames = SubResource("SpriteFrames_i6x3d")
+frame_progress = 0.84741
+speed_scale = 3.0
