@@ -3,6 +3,6 @@
 [ext_resource type="AudioStream" uid="uid://b3t2pnwjh7mqv" path="res://musica_jogo.mp3" id="1_vohvr"]
 [ext_resource type="Script" uid="uid://fvoeyohr0s00" path="res://musica_global.gd" id="2_script"]
 
-[node name="musica_global" type="AudioStreamPlayer2D"]
+[node name="musica_global" type="AudioStreamPlayer"]
 stream = ExtResource("1_vohvr")
 script = ExtResource("2_script")

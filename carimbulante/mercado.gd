@@ -9,9 +9,10 @@ extends Node2D
 @onready var geladeira_grande_scene = preload("res://geladeira_grande.tscn")
 @onready var geladeira_pequena_scene = preload("res://geladeira_pequena.tscn")
 
+# Tamanho do grid aumentado para garantir sobreposição e sem brechas
 var grid_size = 128
-var map_width = 16
-var map_height = 12
+# Espessura da parede para preencher os cantos
+var wall_thickness = 20
 
 const NORTE = 0
 const SUL   = 1
@@ -20,8 +21,9 @@ const OESTE = 3
 const OPOSTO = [SUL, NORTE, OESTE, LESTE]
 const DIR_VEC = [Vector2i(0,-1), Vector2i(0,1), Vector2i(1,0), Vector2i(-1,0)]
 
-var maze_w = 7
-var maze_h = 5
+# Dimensões do labirinto (celulares)
+var maze_w = 15
+var maze_h = 12
 
 var paredes = []   
 var visitado = []
@@ -51,71 +53,55 @@ func gerar_mapa_procedural():
 
 	_dfs_labirinto(0, 0)
 
-	var gw = maze_w * 2 + 1
-	var gh = maze_h * 2 + 1
+	# Criar as paredes externas (bordas)
+	# Parede Norte e Sul
+	for x in range(maze_w):
+		_criar_parede_segmento(Vector2(x * grid_size + grid_size/2, 0), 0.0) # Norte
+		_criar_parede_segmento(Vector2(x * grid_size + grid_size/2, maze_h * grid_size), 0.0) # Sul
+	
+	# Parede Leste e Oeste
+	for y in range(maze_h):
+		_criar_parede_segmento(Vector2(0, y * grid_size + grid_size/2), PI/2.0) # Oeste
+		_criar_parede_segmento(Vector2(maze_w * grid_size, y * grid_size + grid_size/2), PI/2.0) # Leste
 
-	var grid = []
-	for x in range(gw):
-		grid.append([])
-		for _y in range(gh):
-			grid[x].append(0)
+	# Preencher paredes internas
+	for x in range(maze_w):
+		for y in range(maze_h):
+			# Parede Leste de cada célula (exceto a última coluna que já tem a borda)
+			if x < maze_w - 1 and paredes[x][y][LESTE]:
+				_criar_parede_segmento(Vector2((x + 1) * grid_size, y * grid_size + grid_size/2), PI/2.0)
+			
+			# Parede Sul de cada célula (exceto a última linha que já tem a borda)
+			if y < maze_h - 1 and paredes[x][y][SUL]:
+				_criar_parede_segmento(Vector2(x * grid_size + grid_size/2, (y + 1) * grid_size), 0.0)
 
-	for x in range(gw):
-		grid[x][0] = 1
-		grid[x][gh - 1] = 1
-	for y in range(gh):
-		grid[0][y] = 2
-		grid[gw - 1][y] = 2
+	# Preencher todos os "nós" (junções) para garantir que não haja brechas nos cantos
+	for x in range(maze_w + 1):
+		for y in range(maze_h + 1):
+			_criar_parede_no(Vector2(x * grid_size, y * grid_size))
 
-	for cx in range(maze_w):
-		for cy in range(maze_h):
-			var gx = 1 + cx * 2
-			var gy = 1 + cy * 2
-
-			if cy < maze_h - 1 and paredes[cx][cy][SUL]:
-				grid[gx][gy + 1] = 1
-
-			if cx < maze_w - 1 and paredes[cx][cy][LESTE]:
-				grid[gx + 1][gy] = 2
-
-			if cx < maze_w - 1 and cy < maze_h - 1:
-				grid[gx + 1][gy + 1] = 1
-
-	var spawn_gx = 1
-	var spawn_gy = 1 + (maze_h - 1) * 2
+	# Posicionar jogador
+	var spawn_x = 0
+	var spawn_y = maze_h - 1
 	if has_node("jogador"):
 		$jogador.global_position = Vector2(
-			spawn_gx * grid_size + grid_size / 2,
-			spawn_gy * grid_size + grid_size / 2
+			spawn_x * grid_size + grid_size / 2,
+			spawn_y * grid_size + grid_size / 2
 		)
 
-	for x in range(gw):
-		for y in range(gh):
-			var world_pos = Vector2(x * grid_size + grid_size / 2, y * grid_size + grid_size / 2)
-			match grid[x][y]:
-				1:
-					_criar_parede(world_pos, 0.0)
-				2:
-					_criar_parede(world_pos, PI / 2.0)
-
-	for cx in range(maze_w):
-		for cy in range(maze_h):
-			var gx = 1 + cx * 2
-			var gy = 1 + cy * 2
-			if gx == spawn_gx and gy == spawn_gy:
+	# Instanciar prateleiras
+	for x in range(maze_w):
+		for y in range(maze_h):
+			if x == spawn_x and y == spawn_y:
 				continue
-			if randf() < 0.4:
-				var world_pos = Vector2(gx * grid_size + grid_size / 2, gy * grid_size + grid_size / 2)
+			if randf() < 0.3:
+				var world_pos = Vector2(x * grid_size + grid_size / 2, y * grid_size + grid_size / 2)
 				_instanciar_prateleira(world_pos)
 
 func _dfs_labirinto(x: int, y: int):
 	visitado[x][y] = true
 	var dirs = [NORTE, SUL, LESTE, OESTE]
-	for i in range(dirs.size() - 1, 0, -1):
-		var j = randi() % (i + 1)
-		var tmp = dirs[i]
-		dirs[i] = dirs[j]
-		dirs[j] = tmp
+	dirs.shuffle()
 
 	for d in dirs:
 		var nx = x + DIR_VEC[d].x
@@ -125,12 +111,28 @@ func _dfs_labirinto(x: int, y: int):
 			paredes[nx][ny][OPOSTO[d]] = false
 			_dfs_labirinto(nx, ny)
 
-func _criar_parede(pos: Vector2, rot: float):
+func _criar_parede_segmento(pos: Vector2, rot: float):
 	var p = parede_scene.instantiate()
 	add_child(p)
 	p.global_position = pos
 	p.rotation = rot
-	p.scale.x = float(grid_size) / 686.0
+	# Ajustar escala para cobrir exatamente o grid_size + uma pequena margem para evitar gaps
+	# O tamanho original é 686. Queremos que ele tenha grid_size + wall_thickness
+	p.scale.x = float(grid_size + 2) / 686.0
+	# Centralizar a colisão (o original tem position 333,0)
+	# Vamos resetar a posição do CollisionShape2D para 0 para facilitar o posicionamento
+	if p.has_node("CollisionShape2D"):
+		p.get_node("CollisionShape2D").position = Vector2.ZERO
+
+func _criar_parede_no(pos: Vector2):
+	# Cria um pequeno bloco no encontro das paredes para fechar qualquer brecha
+	var p = parede_scene.instantiate()
+	add_child(p)
+	p.global_position = pos
+	# Escala mínima apenas para cobrir o buraco do canto
+	p.scale.x = 40.0 / 686.0 
+	if p.has_node("CollisionShape2D"):
+		p.get_node("CollisionShape2D").position = Vector2.ZERO
 
 func _instanciar_prateleira(pos: Vector2):
 	var opcoes = [
